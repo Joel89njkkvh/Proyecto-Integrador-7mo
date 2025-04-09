@@ -1,7 +1,5 @@
 # dockerfile
 
-
-# Imagen base de PHP con extensiones necesarias
 FROM php:8.2-fpm
 
 # Instalar dependencias
@@ -16,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     && docker-php-ext-configure gd \
-    && docker-php-ext-install gd mbstring pdo pdo_mysql bcmath opcache
+    && docker-php-ext-install gd mbstring pdo pdo_mysql pdo_sqlite bcmath opcache
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
